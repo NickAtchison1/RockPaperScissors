@@ -45,8 +45,37 @@ namespace RockPaperScissors
 
         private void StartGame()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Select:\n" +
+                "1. Rock\n" +
+                "2. Paper\n" +
+                "3. Scissors\n");
+            string actionString = Console.ReadLine();
+            int actionNumber = Convert.ToInt32(actionString);
+            GameActions action = new GameActions();
+            switch (actionNumber)
+            {
+                case 1:
+                    action.Actions = GameActions.Action.ROCK;
+                    break;
+                case 2:
+                    action.Actions = GameActions.Action.PAPER;
+                    break;
+                case 3:
+                    action.Actions = GameActions.Action.SCISSORS;
+                    break;
+            }
         }
+
+        //private void UserAction ()
+        //{
+        //    GameActions gameAction = new GameActions();
+        //    gameAction.action = Convert.ToInt32(Console.ReadLine());
+        //    //int userInput = Convert.ToInt32(Console.ReadLine());
+        //    if (gameAction.action == 1)
+        //    {
+        //        gameAction.action.ROCK;
+        //    };
+        //}
 
         private void WaitForKey()
         {

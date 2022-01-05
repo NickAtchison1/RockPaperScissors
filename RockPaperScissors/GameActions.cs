@@ -14,5 +14,11 @@ namespace RockPaperScissors
             PAPER = 2,
             SCISSORS = 3
         }
+
+        public GameActions()
+        {
+
+        }
+        public Action Actions { get; set; }
     }
 }
