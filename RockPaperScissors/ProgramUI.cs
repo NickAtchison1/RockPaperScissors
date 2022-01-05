@@ -101,10 +101,6 @@ namespace RockPaperScissors
 
         private int ComputerAction()
         {
-            //Console.WriteLine("Select:\n" +
-            //    "1. Rock\n" +
-            //    "2. Paper\n" +
-            //    "3. Scissors\n");
             Random random = new Random();
             int cpuChoice = random.Next(1, 4);
             GameActions action = new GameActions();
@@ -130,9 +126,6 @@ namespace RockPaperScissors
             Thread.Sleep(1000);
             return cpuChoice;
         }
-
-
-
 
         private void WaitForKey()
         {
