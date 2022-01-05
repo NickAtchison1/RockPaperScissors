@@ -30,7 +30,7 @@ namespace RockPaperScissors
                 {
                     case "1":
                         StartGame();
-                        break
+                        break;
                     case "2":
                         isRunning = false;
                         break;
