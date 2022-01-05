@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RockPaperScissors
 {
     public class ProgramUI
     {
-        private void Run()
+        public void Run()
         {
             RunGame();
         }
@@ -45,6 +46,32 @@ namespace RockPaperScissors
 
         private void StartGame()
         {
+            int user = UserAction();
+            int cpu = ComputerAction();
+            if (user > cpu)
+            {
+                Console.WriteLine("User Wins");
+                WaitForKey();
+            }
+
+            else if (user < cpu)
+            {
+                Console.WriteLine("CPU Wins!");
+                WaitForKey();
+            }
+            else if (user == cpu)
+            {
+                Console.WriteLine("Tie Game");
+                WaitForKey();
+            }
+               
+
+
+           
+        }
+
+        private int UserAction()
+        {
             Console.WriteLine("Select:\n" +
                 "1. Rock\n" +
                 "2. Paper\n" +
@@ -55,27 +82,61 @@ namespace RockPaperScissors
             switch (actionNumber)
             {
                 case 1:
+                    Console.WriteLine("You chose Rock!");
                     action.Actions = GameActions.Action.ROCK;
                     break;
                 case 2:
+                    Console.WriteLine("You chose Paper!");
                     action.Actions = GameActions.Action.PAPER;
                     break;
                 case 3:
+                    Console.WriteLine("You chose Scissors!");
                     action.Actions = GameActions.Action.SCISSORS;
                     break;
+                default:
+                    Console.WriteLine("Invalid Selection.");
+                    WaitForKey();
+                    break;
             }
+            Thread.Sleep(1000);
+            return actionNumber;
+            
         }
 
-        //private void UserAction ()
-        //{
-        //    GameActions gameAction = new GameActions();
-        //    gameAction.action = Convert.ToInt32(Console.ReadLine());
-        //    //int userInput = Convert.ToInt32(Console.ReadLine());
-        //    if (gameAction.action == 1)
-        //    {
-        //        gameAction.action.ROCK;
-        //    };
-        //}
+        private int ComputerAction()
+        {
+            //Console.WriteLine("Select:\n" +
+            //    "1. Rock\n" +
+            //    "2. Paper\n" +
+            //    "3. Scissors\n");
+            Random random = new Random();
+            int cpuChoice = random.Next(1, 4);
+            GameActions action = new GameActions();
+            switch (cpuChoice)
+            {
+                case 1:
+                    Console.WriteLine("CPU chose Rock!");
+                    action.Actions = GameActions.Action.ROCK;
+                    break;
+                case 2:
+                    Console.WriteLine("CPU chose Paper!");
+                    action.Actions = GameActions.Action.PAPER;
+                    break;
+                case 3:
+                    Console.WriteLine("CPU chose Scissors!");
+                    action.Actions = GameActions.Action.SCISSORS;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Selection.");
+                    WaitForKey();
+                    break;
+            }
+            Thread.Sleep(1000);
+            return cpuChoice;
+        }
+
+
+
 
         private void WaitForKey()
         {
