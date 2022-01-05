@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors
 {
-    internal class Program
+    public class GameActions
     {
-        static void Main(string[] args)
+        public enum Action
         {
-            ProgramUI ui = new ProgramUI();
+            ROCK = 1,
+            PAPER = 2,
+            SCISSORS = 3
         }
     }
 }
