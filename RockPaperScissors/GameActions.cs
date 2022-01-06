@@ -16,7 +16,9 @@ namespace RockPaperScissors
         }
 
         public GameActions()
-        {}
-        public GameActions Actions { get; set; }
+        {
+           
+        }
+        public Action Actions { get; set; }
     }
 }

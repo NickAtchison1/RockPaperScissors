@@ -48,19 +48,18 @@ namespace RockPaperScissors
         {
             int user = UserAction();
             int cpu = ComputerAction();
-            int userScore = 0;
-            int cpuScore = 0;
+           
             if ((user == 1 && cpu == 3) || (user == 2 && cpu == 1) || (user == 3 && cpu == 2))
             {
                 Console.WriteLine("User Wins");
-                Console.WriteLine(userScore++);
+                
                 WaitForKey();
             }
 
             else if ((user == 3 && cpu == 1) || (user == 1 && cpu == 2) || (user == 2 && cpu == 3))
             {
                 Console.WriteLine("CPU Wins!");
-                Console.WriteLine(cpuScore++);
+               
                 WaitForKey();
             }
             else
