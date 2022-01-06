@@ -83,6 +83,7 @@ namespace RockPaperScissors
 
         private int UserAction()
         {
+            Console.Clear();
             Console.WriteLine("Select:\n" +
                 "1. Rock\n" +
                 "2. Paper\n" +
@@ -92,6 +93,8 @@ namespace RockPaperScissors
             GameActions action = new GameActions();
             ASCIIArt art = new ASCIIArt();
             string artToDisplay = art.Artwork.FirstOrDefault(a => a.Key == actionNumber).Value.ToString();
+            Console.Clear();
+
             switch (actionNumber)
             {
                 case 1:
