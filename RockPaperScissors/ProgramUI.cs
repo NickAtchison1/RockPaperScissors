@@ -11,6 +11,7 @@ namespace RockPaperScissors
     {
         int userScore = 0;
         int cpuScore = 0;
+        bool gameIsRunning;
         public void Run()
         {
             RunGame();
@@ -48,41 +49,51 @@ namespace RockPaperScissors
 
         private void StartGame()
         {
-            int user = UserAction();
-            int cpu = ComputerAction();
-           
-            if ((user == 1 && cpu == 3) || (user == 2 && cpu == 1) || (user == 3 && cpu == 2))
+            bool gameIsRunning = true;
+            while (gameIsRunning)
             {
-                Console.WriteLine("User Wins");
-                userScore++;
-                Console.WriteLine($"Current score is:\n" +
-                    $"User: {userScore}\n" +
-                    $"CPU: {cpuScore}\n");
-                WaitForKey();
-            }
+                int user = UserAction();
+                int cpu = ComputerAction();
 
-            else if ((user == 3 && cpu == 1) || (user == 1 && cpu == 2) || (user == 2 && cpu == 3))
-            {
-                Console.WriteLine("CPU Wins!");
-                cpuScore++;
-                Console.WriteLine($"Current score is:\n" +
-                    $"User: {userScore}\n" +
-                    $"CPU: {cpuScore}\n");
-                WaitForKey();
-            }
-            else
-            {
-                Console.WriteLine("Tie Game");
-                Console.WriteLine($"Current score is:\n" +
-                    $"User: {userScore}\n" +
-                    $"CPU: {cpuScore}\n");
-                WaitForKey();
+                if ((user == 1 && cpu == 3) || (user == 2 && cpu == 1) || (user == 3 && cpu == 2))
+                {
+                    Console.WriteLine("User Wins");
+                    userScore++;
+                    Console.WriteLine($"Current score is:\n" +
+                        $"-----------------------------------\n" +
+                        $"User: {userScore}\n" +
+                        $"CPU: {cpuScore}\n" +
+                        $"-----------------------------------\n");
+                    GameLoop();
+                }
+
+                else if ((user == 3 && cpu == 1) || (user == 1 && cpu == 2) || (user == 2 && cpu == 3))
+                {
+                    Console.WriteLine("CPU Wins!");
+                    cpuScore++;
+                    Console.WriteLine($"Current score is:\n" +
+                        $"-----------------------------------\n" +
+                        $"User: {userScore}\n" +
+                        $"CPU: {cpuScore}\n" +
+                        $"-----------------------------------\n");
+                    GameLoop();
+                }
+                else
+                {
+                    Console.WriteLine("Tie Game");
+                    Console.WriteLine($"Current score is:\n" +
+                        $"-----------------------------------\n" +
+                        $"User: {userScore}\n" +
+                        $"CPU: {cpuScore}\n" +
+                        $"-----------------------------------\n");
+                    GameLoop();
+                }
             }
         }
 
-
         private int UserAction()
         {
+            Console.Clear();
             Console.WriteLine("Select:\n" +
                 "1. Rock\n" +
                 "2. Paper\n" +
@@ -92,6 +103,8 @@ namespace RockPaperScissors
             GameActions action = new GameActions();
             ASCIIArt art = new ASCIIArt();
             string artToDisplay = art.Artwork.FirstOrDefault(a => a.Key == actionNumber).Value.ToString();
+            Console.Clear();
+
             switch (actionNumber)
             {
                 case 1:
@@ -156,6 +169,21 @@ namespace RockPaperScissors
         {
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
+        }
+
+        private void GameLoop()
+        {
+            Console.WriteLine("Press 'Q' to quit, otherwise press any other key for a new game.");
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "Q":
+                    gameIsRunning = false;
+                    break;
+                default:
+                    gameIsRunning = true;
+                    break;
+            }
         }
     }
 }
