@@ -87,10 +87,12 @@ namespace RockPaperScissors
                     break;
                 case 2:
                     Console.WriteLine("You chose Paper!");
+                    Console.WriteLine(artToDisplay);
                     action.Actions = GameActions.Action.PAPER;
                     break;
                 case 3:
                     Console.WriteLine("You chose Scissors!");
+                    Console.WriteLine(artToDisplay);
                     action.Actions = GameActions.Action.SCISSORS;
                     break;
                 default:
@@ -119,10 +121,12 @@ namespace RockPaperScissors
                     break;
                 case 2:
                     Console.WriteLine("CPU chose Paper!");
+                    Console.WriteLine(artToDisplay);
                     action.Actions = GameActions.Action.PAPER;
                     break;
                 case 3:
                     Console.WriteLine("CPU chose Scissors!");
+                    Console.WriteLine(artToDisplay);
                     action.Actions = GameActions.Action.SCISSORS;
                     break;
                 default:
