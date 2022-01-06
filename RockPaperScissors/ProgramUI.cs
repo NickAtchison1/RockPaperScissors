@@ -48,15 +48,19 @@ namespace RockPaperScissors
         {
             int user = UserAction();
             int cpu = ComputerAction();
+            int userScore = 0;
+            int cpuScore = 0;
             if ((user == 1 && cpu == 3) || (user == 2 && cpu == 1) || (user == 3 && cpu == 2))
             {
                 Console.WriteLine("User Wins");
+                Console.WriteLine(userScore++);
                 WaitForKey();
             }
 
             else if ((user == 3 && cpu == 1) || (user == 1 && cpu == 2) || (user == 2 && cpu == 3))
             {
                 Console.WriteLine("CPU Wins!");
+                Console.WriteLine(cpuScore++);
                 WaitForKey();
             }
             else
@@ -65,6 +69,7 @@ namespace RockPaperScissors
                 WaitForKey();
             }
         }
+
 
         private int UserAction()
         {
@@ -75,7 +80,6 @@ namespace RockPaperScissors
             string actionString = Console.ReadLine();
             int actionNumber = Convert.ToInt32(actionString);
             GameActions action = new GameActions();
-            
             ASCIIArt art = new ASCIIArt();
             string artToDisplay = art.Artwork.FirstOrDefault(a => a.Key == actionNumber).Value.ToString();
             switch (actionNumber)
@@ -102,7 +106,7 @@ namespace RockPaperScissors
             }
             Thread.Sleep(1000);
             return actionNumber;
-            
+
         }
 
         private int ComputerAction()
