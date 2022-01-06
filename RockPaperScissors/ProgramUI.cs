@@ -11,7 +11,7 @@ namespace RockPaperScissors
     {
         int userScore = 0;
         int cpuScore = 0;
-        bool keepGameRunning;
+     
         public void Run()
         {
             RunGame();
@@ -179,11 +179,9 @@ namespace RockPaperScissors
             switch (userInput)
             {
                 case "Q":
-                    keepGameRunning = false;
                     RunGame();
                     break;
                 default:
-                    keepGameRunning = true;
                     break;
             }
         }
