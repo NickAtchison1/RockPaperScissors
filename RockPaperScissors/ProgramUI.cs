@@ -75,10 +75,14 @@ namespace RockPaperScissors
             string actionString = Console.ReadLine();
             int actionNumber = Convert.ToInt32(actionString);
             GameActions action = new GameActions();
+            
+            ASCIIArt art = new ASCIIArt();
+            string artToDisplay = art.Artwork.FirstOrDefault(a => a.Key == actionNumber).Value.ToString();
             switch (actionNumber)
             {
                 case 1:
                     Console.WriteLine("You chose Rock!");
+                    Console.WriteLine(artToDisplay);
                     action.Actions = GameActions.Action.ROCK;
                     break;
                 case 2:
@@ -104,10 +108,13 @@ namespace RockPaperScissors
             Random random = new Random();
             int cpuChoice = random.Next(1, 4);
             GameActions action = new GameActions();
+            ASCIIArt art = new ASCIIArt();
+            string artToDisplay = art.Artwork.FirstOrDefault(a => a.Key == cpuChoice).Value.ToString();
             switch (cpuChoice)
             {
                 case 1:
                     Console.WriteLine("CPU chose Rock!");
+                    Console.WriteLine(artToDisplay);
                     action.Actions = GameActions.Action.ROCK;
                     break;
                 case 2:

@@ -11,7 +11,35 @@ namespace RockPaperScissors
         public ASCIIArt()
         {
         }
-        public Dictionary<int, string> Artwork { get;}
-        return 
+        public Dictionary<int, string> Artwork
+        {
+            get
+            {
+                return new Dictionary<int, string>()
+                {
+                    {1, " \n" +
+                "" +
+                "    .--.--._\n" +
+                " __ |  |  | `|\n" +
+                "/   |  |  |  |\n" +
+                "|  /|__|__|__/\n" +
+                "| /  /      |\n" +
+                "|   /       |\n" +
+                "(  ,       /\n" +
+                " \\        |\n" +
+                "  |       |\n" +
+                "  |       |\n"
+            },
+
+
+
+                    { 2, "Paper!!!!"},
+                    { 3, "Scissors!!!"}
+                };
+
+
+            }
+        }
+         
     }
 }
