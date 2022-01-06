@@ -11,7 +11,7 @@ namespace RockPaperScissors
     {
         int userScore = 0;
         int cpuScore = 0;
-        bool gameIsRunning;
+        bool keepGameRunning;
         public void Run()
         {
             RunGame();
@@ -19,6 +19,7 @@ namespace RockPaperScissors
 
         private void RunGame()
         {
+            Console.Clear();
             bool isRunning = true;
             while (isRunning)
             {
@@ -49,7 +50,7 @@ namespace RockPaperScissors
 
         private void StartGame()
         {
-            bool gameIsRunning = true;
+           bool gameIsRunning = true;
             while (gameIsRunning)
             {
                 int user = UserAction();
@@ -178,10 +179,11 @@ namespace RockPaperScissors
             switch (userInput)
             {
                 case "Q":
-                    gameIsRunning = false;
+                    keepGameRunning = false;
+                    RunGame();
                     break;
                 default:
-                    gameIsRunning = true;
+                    keepGameRunning = true;
                     break;
             }
         }
