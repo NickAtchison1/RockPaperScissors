@@ -9,9 +9,7 @@ namespace RockPaperScissors
 {
     public class ProgramUI
     {
-        int userScore = 0;
-        int cpuScore = 0;
-     
+
         public void Run()
         {
             RunGame();
@@ -50,11 +48,17 @@ namespace RockPaperScissors
 
         private void StartGame()
         {
-           bool gameIsRunning = true;
+            Score score = new Score();
+
+            int userScore = score.UserScore;
+            int cpuScore = score.ComputerScore;
+
+            bool gameIsRunning = true;
             while (gameIsRunning)
             {
                 int user = UserAction();
                 int cpu = ComputerAction();
+
 
                 if ((user == 1 && cpu == 3) || (user == 2 && cpu == 1) || (user == 3 && cpu == 2))
                 {
