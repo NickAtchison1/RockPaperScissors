@@ -23,8 +23,9 @@ namespace RockPaperScissors
             {
                 Console.WriteLine("Let's Play Rock, Paper, Scissors\n" +
                     "\n" +
-                    "1. Start Game\n" +
-                    "2. Exit\n");
+                    "1. Start a Series of Games\n" +
+                    "2. Play a Best Two out of Three\n" +
+                    "3. Exit\n");
 
 
                 string userInput = Console.ReadLine();
@@ -35,6 +36,9 @@ namespace RockPaperScissors
                         StartGame();
                         break;
                     case "2":
+                        StartBestTwoOutOfThree();
+                        break;
+                    case "3":
                         isRunning = false;
                         break;
                     default:
@@ -92,6 +96,54 @@ namespace RockPaperScissors
                         $"CPU: {cpuScore}\n" +
                         $"-----------------------------------\n");
                     GameLoop();
+                }
+            }
+        }
+
+        private void StartBestTwoOutOfThree()
+        {
+            Score score = new Score();
+
+            int userScore = score.UserScore;
+            int cpuScore = score.ComputerScore;
+            bool bestTwoOutOfThree = score.BestTwoOutOfThree();
+            while (bestTwoOutOfThree = true)
+            {
+                int user = UserAction();
+                int cpu = ComputerAction();
+
+                if ((user == 1 && cpu == 3) || (user == 2 && cpu == 1) || (user == 3 && cpu == 2))
+                {
+                    Console.WriteLine("User Wins");
+                    userScore++;
+                    Console.WriteLine($"Current score is:\n" +
+                                      $"-----------------------------------\n" +
+                                      $"User: {userScore}\n" +
+                                      $"CPU: {cpuScore}\n" +
+                                      $"-----------------------------------\n");
+                    WaitForKey();
+                }
+
+                else if ((user == 3 && cpu == 1) || (user == 1 && cpu == 2) || (user == 2 && cpu == 3))
+                {
+                    Console.WriteLine("CPU Wins!");
+                    cpuScore++;
+                    Console.WriteLine($"Current score is:\n" +
+                                      $"-----------------------------------\n" +
+                                      $"User: {userScore}\n" +
+                                      $"CPU: {cpuScore}\n" +
+                                      $"-----------------------------------\n");
+                    WaitForKey();
+                }
+                else
+                {
+                    Console.WriteLine("Tie Game");
+                    Console.WriteLine($"Current score is:\n" +
+                                      $"-----------------------------------\n" +
+                                      $"User: {userScore}\n" +
+                                      $"CPU: {cpuScore}\n" +
+                                      $"-----------------------------------\n");
+                    WaitForKey();
                 }
             }
         }
