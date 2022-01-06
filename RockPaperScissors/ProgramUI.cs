@@ -9,6 +9,8 @@ namespace RockPaperScissors
 {
     public class ProgramUI
     {
+        int userScore = 0;
+        int cpuScore = 0;
         public void Run()
         {
             RunGame();
@@ -51,17 +53,28 @@ namespace RockPaperScissors
             if ((user == 1 && cpu == 3) || (user == 2 && cpu == 1) || (user == 3 && cpu == 2))
             {
                 Console.WriteLine("User Wins");
+                userScore++;
+                Console.WriteLine($"Current score is:\n" +
+                    $"User: {userScore}\n" +
+                    $"CPU: {cpuScore}\n");
                 WaitForKey();
             }
 
             else if ((user == 3 && cpu == 1) || (user == 1 && cpu == 2) || (user == 2 && cpu == 3))
             {
                 Console.WriteLine("CPU Wins!");
+                cpuScore++;
+                Console.WriteLine($"Current score is:\n" +
+                    $"User: {userScore}\n" +
+                    $"CPU: {cpuScore}\n");
                 WaitForKey();
             }
             else
             {
                 Console.WriteLine("Tie Game");
+                Console.WriteLine($"Current score is:\n" +
+                    $"User: {userScore}\n" +
+                    $"CPU: {cpuScore}\n");
                 WaitForKey();
             }
         }
