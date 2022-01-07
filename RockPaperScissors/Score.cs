@@ -15,32 +15,39 @@ namespace RockPaperScissors
         }
         public int UserScore { get; set; } = 0;
         public int ComputerScore { get; set; } = 0;
+        public bool LessThanTwoGamesWon { get; set; } = true;
 
-        public bool BestTwoOutOfThree()
+        public void BestTwoOutOfThree(int userScore , int cpuScore)
         {
-            int userScore = 0;
-            int cpuScore = 0;
-            bool twoGamesWon = false;
-            if (UserScore < 2)
+            if ((userScore < 2) && (cpuScore < 2))
             {
-                userScore = UserScore;
-                cpuScore = ComputerScore;
+                Console.WriteLine($"Current score is :\n" +
+                                  $"-----------------------------------\n" +
+                                  $"User: {userScore}\n" +
+                                  $"CPU: {cpuScore}\n" +
+                                  $"-----------------------------------\n");
+                LessThanTwoGamesWon = true;
             }
-            else if (UserScore == 2)
+            else if (userScore == 2)
+            { 
+                Console.WriteLine("You Win the Best Two out of Three!");
+                Console.WriteLine($"Final Score was:\n" +
+                                  $"-----------------------------------\n" +
+                                  $"User: {userScore}\n" +
+                                  $"CPU: {cpuScore}\n" +
+                                  $"-----------------------------------\n");
+                LessThanTwoGamesWon = false;
+            }
+            else if (cpuScore == 2)
             {
-                userScore = UserScore;
-                cpuScore = ComputerScore;
-                Console.WriteLine("You Win!");
-                twoGamesWon = true;
+                Console.WriteLine("CPU Wins the Best Two out of Three!");
+                Console.WriteLine($"Final Score was:\n" +
+                                 $"-----------------------------------\n" +
+                                 $"User: {userScore}\n" +
+                                 $"CPU: {cpuScore}\n" +
+                                 $"-----------------------------------\n");
+                LessThanTwoGamesWon = false;
             }
-            else if (ComputerScore == 2)
-            {
-                userScore = UserScore;
-                cpuScore = ComputerScore;
-                Console.WriteLine("CPU Wins!");
-                twoGamesWon = true;
-            }
-            return twoGamesWon;
         }
     }
 }

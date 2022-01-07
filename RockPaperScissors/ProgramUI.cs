@@ -63,10 +63,9 @@ namespace RockPaperScissors
                 int user = UserAction();
                 int cpu = ComputerAction();
 
-
                 if ((user == 1 && cpu == 3) || (user == 2 && cpu == 1) || (user == 3 && cpu == 2))
                 {
-                    Console.WriteLine("User Wins");
+                    Console.WriteLine("User Wins!");
                     userScore++;
                     Console.WriteLine($"Current score is:\n" +
                         $"-----------------------------------\n" +
@@ -75,7 +74,6 @@ namespace RockPaperScissors
                         $"-----------------------------------\n");
                     GameLoop();
                 }
-
                 else if ((user == 3 && cpu == 1) || (user == 1 && cpu == 2) || (user == 2 && cpu == 3))
                 {
                     Console.WriteLine("CPU Wins!");
@@ -106,8 +104,7 @@ namespace RockPaperScissors
 
             int userScore = score.UserScore;
             int cpuScore = score.ComputerScore;
-            bool bestTwoOutOfThree = score.BestTwoOutOfThree();
-            while (bestTwoOutOfThree = true)
+            do
             {
                 int user = UserAction();
                 int cpu = ComputerAction();
@@ -116,36 +113,34 @@ namespace RockPaperScissors
                 {
                     Console.WriteLine("User Wins");
                     userScore++;
-                    Console.WriteLine($"Current score is:\n" +
-                                      $"-----------------------------------\n" +
-                                      $"User: {userScore}\n" +
-                                      $"CPU: {cpuScore}\n" +
-                                      $"-----------------------------------\n");
+                    score.BestTwoOutOfThree(userScore, cpuScore);
+                    if (score.LessThanTwoGamesWon == false)
+                    {
+                        WaitForKey();
+                        RunGame();
+                    }
                     WaitForKey();
                 }
-
                 else if ((user == 3 && cpu == 1) || (user == 1 && cpu == 2) || (user == 2 && cpu == 3))
                 {
                     Console.WriteLine("CPU Wins!");
                     cpuScore++;
-                    Console.WriteLine($"Current score is:\n" +
-                                      $"-----------------------------------\n" +
-                                      $"User: {userScore}\n" +
-                                      $"CPU: {cpuScore}\n" +
-                                      $"-----------------------------------\n");
+                    score.BestTwoOutOfThree(userScore, cpuScore);
+                    if (score.LessThanTwoGamesWon == false)
+                    {
+                        WaitForKey();
+                        RunGame();
+                    }
                     WaitForKey();
                 }
                 else
                 {
                     Console.WriteLine("Tie Game");
-                    Console.WriteLine($"Current score is:\n" +
-                                      $"-----------------------------------\n" +
-                                      $"User: {userScore}\n" +
-                                      $"CPU: {cpuScore}\n" +
-                                      $"-----------------------------------\n");
+                    score.BestTwoOutOfThree(userScore, cpuScore);
                     WaitForKey();
                 }
             }
+            while (score.LessThanTwoGamesWon);
         }
 
         private int UserAction()
@@ -186,7 +181,6 @@ namespace RockPaperScissors
             }
             Thread.Sleep(1000);
             return actionNumber;
-
         }
 
         private int ComputerAction()
